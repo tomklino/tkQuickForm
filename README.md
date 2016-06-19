@@ -16,7 +16,7 @@ Now, in your controller:
 var yourApp = angular.module('yourApp', ['tkQuickForm']);
 
 yourApp.controller("yourController", function() {
-  #scope.formStructure = [
+  $scope.formStructure = [
     {
       name: 'myFirstInput',
       type: 'string'
