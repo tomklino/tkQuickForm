@@ -18,11 +18,11 @@ var yourApp = angular.module('yourApp', ['tkQuickForm']);
 yourApp.controller("yourController", function() {
   $scope.formStructure = [
     {
-      name: 'myFirstInput',
+      fieldName: 'myFirstInput',
       type: 'string'
     },
     {
-      name: 'myFirstSelectField',
+      fieldName: 'myFirstSelectField',
       type: 'enum',
       enum: ['option1', 'option2', 'option3']
     }
