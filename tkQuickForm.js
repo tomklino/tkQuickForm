@@ -3,7 +3,7 @@ angular.module('tkQuickForm', [])
 
 function formDirective($http, $compile) {
     var $scope;
-    
+
     function link(scope, elem, attr, ctrl) {
         $scope = scope;
         $scope.submitUrl = (attr.submitUrl ? attr.submitUrl : "/");
@@ -12,7 +12,7 @@ function formDirective($http, $compile) {
         $scope.submitButton = angular.element('<input>');
         $scope.submitFunction =
             (typeof $scope.submitButton === 'function' ? $scope.submitFunction : submitForm);
-        
+
         var options = {};
         if(attr.clearButton) {
             options.clearButton = attr.clearButton;
@@ -24,10 +24,10 @@ function formDirective($http, $compile) {
                 $compile(buildForm(val, elem, options).contents())(scope);
             }
         });
-        
+
         $scope.fillFunction = fillData;
     }
-    
+
     function onClickSubmit() {
         if(validateForm()) {
             $scope.submitButton.attr("disabled", true);
@@ -38,7 +38,7 @@ function formDirective($http, $compile) {
             $scope.$apply($scope.submitFunction(err));
         }
     }
-    
+
     function validateForm() {
         var valid = true;
         $scope.inputElements.forEach((elem) => {
@@ -47,7 +47,7 @@ function formDirective($http, $compile) {
         });
         return valid;
     }
-    
+
     function ResetFunction() {
         this.resetFunctions = new Array();
     }
@@ -60,7 +60,7 @@ function formDirective($http, $compile) {
             this.resetFunctions[i]();
         }
     }
-    
+
     //based on structure - create a form
     function buildForm(mdb, formElement, opt) {
         $scope.reset = new ResetFunction();
@@ -70,14 +70,14 @@ function formDirective($http, $compile) {
             formElement.append($scope.inputElements[i]);
             formElement.append("<br>");
         }
-        
+
         $scope.submitButton
             .attr("type", "button")
             .attr("id", "add_new_movie_button")
             .attr("value", "{{formSubmit}}")
             .on("click", onClickSubmit);
         formElement.append($scope.submitButton);
-        
+
         if(typeof opt === 'object') {
             if(opt.clearButton) {
                 $scope.clearButton = angular.element('<input>');
@@ -88,10 +88,10 @@ function formDirective($http, $compile) {
                 formElement.append($scope.clearButton);
             }
         }
-                
+
         return formElement;
     }
-    
+
     function createInputElement(data) {
         if(data.type == 'string') {
             if(data.maxLength && data.maxLength > 1024) {
@@ -129,34 +129,34 @@ function formDirective($http, $compile) {
                 required: (data.required ? true : false)
             });
         }
-        
+
         return elem;
     }
-    
+
     function createBaseElement(elemType, data) {
         var elem = angular.element(elemType)
             .attr("id", data.id)
             .attr("ng-model", "formData." + data.id);
-        
+
         if(data.hidden) {
             elem.css("display", "none");
         }
         if(data.required) {
             elem.attr("required", "true");
         }
-        
+
         return elem;
     }
-    
+
     function createNumberInput(data) {
         var elem = createBaseElement("<input>", data)
             .attr("type", "number")
             .attr("placeholder", data.placeholder);
-        
+
         $scope.reset.addFunc(() => {
             elem.val("");
         });
-        
+
         return elem;
     }
 
@@ -175,52 +175,52 @@ function formDirective($http, $compile) {
             opt.html(data.options[i]);
             elem.append(opt);
         }
-        
+
         $scope.reset.addFunc(() => {
             defOpt.attr("selected", true);
         });
-        
+
         return elem;
     }
-    
+
     function createTextArea(data) {
         var elem = createBaseElement("<textarea>", data)
             .attr("placeholder", data.placeholder)
             .attr("rows", (data.rows ? data.rows : 5))
             .attr("cols", (data.cols ? data.cols : 50));
-        
+
         $scope.reset.addFunc(() => {
             elem.val("");
         });
-        
+
         return elem;
     }
-    
+
     function createTextInput(data) {
         var elem = createBaseElement("<input>", data)
             .attr("type", "text")
             .attr("placeholder", data.placeholder);
-        
+
         $scope.reset.addFunc(() => {
             elem.val("");
         });
-        
+
         return elem;
     }
-    
+
     function clearData() {
         for(entry in $scope.formData) {
             $scope.formData[entry] = "";
         }
         $scope.reset.go();
     }
-    
+
     function fillData(data) {
         for(entry in data) {
             $scope.formData[entry] = data[entry];
         }
     }
-    
+
     function releaseButton(buttonText) {
         if(buttonText)
             $scope.formSubmit = buttonText;
@@ -230,7 +230,7 @@ function formDirective($http, $compile) {
     function submitForm() {
         var originalSubmit = $scope.formSubmit;
         $scope.formSubmit =  "Loading...";
-        
+
         //send request to server
         $http({
             method: "POST",
@@ -254,9 +254,9 @@ function formDirective($http, $compile) {
         template: "<h1>{{formTitle}}</h1>",
         scope: {
             ds: "=tkQuickForm",
-            fillFunction: "=",
-            submitFunction: "=",
-            formSubmit: "=",
+            fillFunction: "=?",
+            submitFunction: "=?",
+            formSubmit: "=?",
             formTitle: "=",
             formData: "="
         },

@@ -38,3 +38,10 @@ The above form structure will create a form with a single free input field with 
   myFirstSelectField: "option1"
 }
 ```
+
+##Running tests
+
+```
+npm install
+npm run test
+```
