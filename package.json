@@ -1,6 +1,6 @@
 {
   "name": "tk-quick-form",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Angularjs directive to create a form quickly and with very little code\r ## Usage\r In your html file, where you want the form to appear, add the following:",
   "main": "tkQuickForm.js",
   "scripts": {
