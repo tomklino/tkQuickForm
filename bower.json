@@ -1,0 +1,22 @@
+{
+  "name": "tkQuickForm",
+  "main": "tkQuickForm.js",
+  "version": "0.1.0",
+  "homepage": "https://github.com/tomklino/tkQuickForm",
+  "authors": [
+    "Tom Klinovsky <lutraman@gmail.com>"
+  ],
+  "description": "Angularjs directive to quickly create HTML forms and link them to the scope with minimum code",
+  "keywords": [
+    "form",
+    "input"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
