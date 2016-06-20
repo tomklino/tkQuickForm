@@ -1,0 +1,26 @@
+{
+  "name": "tk-quick-form",
+  "version": "0.1.0",
+  "description": "Angularjs directive to create a form quickly and with very little code\r ## Usage\r In your html file, where you want the form to appear, add the following:",
+  "main": "tkQuickForm.js",
+  "scripts": {
+    "test": "karma start karma.conf.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tomklino/tkQuickForm.git"
+  },
+  "author": "Sergey Goliney <sergey@goliney.com> (http://goliney.com/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tomklino/tkQuickForm/issues"
+  },
+  "homepage": "https://github.com/tomklino/tkQuickForm#readme",
+  "devDependencies": {
+    "angular": "~1.5.0",
+    "jasmine-core": "^2.3.4",
+    "karma": "^0.12.31",
+    "karma-chrome-launcher": "^0.1.12",
+    "karma-jasmine": "^0.3.5"
+  }
+}
