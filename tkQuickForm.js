@@ -7,11 +7,19 @@ function formDirective($http, $compile) {
     function link(scope, elem, attr, ctrl) {
         $scope = scope;
         $scope.submitUrl = (attr.submitUrl ? attr.submitUrl : "/");
-        $scope.formSubmit = ($scope.formSubmit ? $scope.formSubmit : "Submit");
+        $scope.formTitle = (attr.formTitle ? attr.formTitle : "");
+        $scope.formSubmit = (attr.formSubmit ? attr.formSubmit : "Submit");
         $scope.formData = {};
         $scope.submitButton = angular.element('<input>');
+        $scope.formObject = {
+            fill: fillData,
+            clear: clearData,
+            enable: enableForm,
+            disable: disableForm
+        };
+        
         $scope.submitFunction =
-            (typeof $scope.submitButton === 'function' ? $scope.submitFunction : submitForm);
+            ($scope.submitFunction ? $scope.submitFunction : submitForm);
 
         var options = {};
         if(attr.clearButton) {
@@ -24,8 +32,6 @@ function formDirective($http, $compile) {
                 $compile(buildForm(val, elem, options).contents())(scope);
             }
         });
-
-        $scope.fillFunction = fillData;
     }
 
     function onClickSubmit() {
@@ -226,6 +232,20 @@ function formDirective($http, $compile) {
             $scope.formSubmit = buttonText;
         $scope.submitButton.attr("disabled", false);
     }
+    
+    function disableForm() {
+        $scope.inputElements.forEach((elem) => {
+            elem.attr("disabled", true);
+        })
+        $scope.submitButton.attr("disabled", true);
+    }
+    
+    function enableForm() {
+        $scope.inputElements.forEach((elem) => {
+            elem.attr("disabled", false);
+        })
+        $scope.submitButton.attr("disabled", false);
+    }
 
     function submitForm() {
         var originalSubmit = $scope.formSubmit;
@@ -250,14 +270,12 @@ function formDirective($http, $compile) {
     }
 
     return {
-        restrict: 'A',
+        restrict: 'E',
         template: "<h1>{{formTitle}}</h1>",
         scope: {
-            ds: "=tkQuickForm",
-            fillFunction: "=?",
-            submitFunction: "=?",
-            formSubmit: "=?",
-            formTitle: "=",
+            ds: "=formStructure",
+            formObject: "=",
+            submitFunction: "&?onSubmit",
             formData: "="
         },
         link: link
