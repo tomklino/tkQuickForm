@@ -3,7 +3,9 @@ Angularjs directive to create a form quickly and with very little code
 
 ## Installation and setup
 `bower install tkQuickForm`
+
 After installing, in your html head section, link the script tag
+
 `<script type="text/javascript" src="/path/to/module/tkQuickForm.js"> </script>`
 
 ## Usage
