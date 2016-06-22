@@ -275,8 +275,8 @@ function formDirective($http, $compile) {
         scope: {
             ds: "=formStructure",
             formObject: "=",
-            submitFunction: "&?onSubmit",
-            formData: "="
+            formData: "=",
+            submitFunction: "&?onSubmit"            
         },
         link: link
     }
