@@ -1,7 +1,7 @@
 angular.module('tkQuickForm', [])
-    .directive('tkQuickForm', ['$http', '$compile', '$timeout', formDirective]);
+    .directive('tkQuickForm', ['$http', '$compile', formDirective]);
 
-function formDirective($http, $compile, $timeout) {
+function formDirective($http, $compile) {
     var $scope;
 
     function link(scope, elem, attr, ctrl) {
