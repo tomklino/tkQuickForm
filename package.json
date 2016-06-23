@@ -1,6 +1,6 @@
 {
   "name": "tk-quick-form",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Angularjs directive to create a form quickly and with very little code",
   "main": "tkQuickForm.js",
   "scripts": {

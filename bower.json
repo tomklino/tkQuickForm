@@ -1,7 +1,7 @@
 {
   "name": "tkQuickForm",
   "main": "tkQuickForm.js",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "homepage": "https://github.com/tomklino/tkQuickForm",
   "authors": [
     "Tom Klinovsky <lutraman@gmail.com>"
