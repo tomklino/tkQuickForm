@@ -216,9 +216,6 @@ function formDirective($http, $compile) {
     }
 
     function clearData() {
-//        for(entry in $scope.formData) {
-//            $scope.formData[entry] = "";
-//        }
         $scope.reset.go();
     }
 
