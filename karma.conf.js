@@ -15,10 +15,12 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      'node_modules/angular/angular.min.js',
-      'node_modules/angular-mocks/angular-mocks.js',
-      'tkQuickForm.js',
-      'test/**/*.spec.js'
+        'node_modules/angular/angular.min.js',
+        'node_modules/angular-mocks/angular-mocks.js',
+        'node_modules/jquery/dist/jquery.min.js',
+        'node_modules/jasmine-jquery/lib/jasmine-jquery.js',
+        'tkQuickForm.js',
+        'test/**/*.spec.js'
     ],
 
 
