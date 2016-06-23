@@ -1,7 +1,7 @@
 angular.module('tkQuickForm', [])
-    .directive('tkQuickForm', ['$http', '$compile', formDirective]);
+    .directive('tkQuickForm', ['$http', '$compile', '$timeout', formDirective]);
 
-function formDirective($http, $compile) {
+function formDirective($http, $compile, $timeout) {
     var $scope;
 
     function link(scope, elem, attr, ctrl) {
@@ -30,6 +30,7 @@ function formDirective($http, $compile) {
         }, (val) => {
             if(typeof val === 'object') {
                 $compile(buildForm(val, elem, options).contents())(scope);
+                clearData();
             }
         });
     }
@@ -183,7 +184,7 @@ function formDirective($http, $compile) {
         }
 
         $scope.reset.addFunc(() => {
-            defOpt.attr("selected", true);
+            $scope.formData[data.id] = data.defOption;
         });
 
         return elem;
@@ -215,9 +216,9 @@ function formDirective($http, $compile) {
     }
 
     function clearData() {
-        for(entry in $scope.formData) {
-            $scope.formData[entry] = "";
-        }
+//        for(entry in $scope.formData) {
+//            $scope.formData[entry] = "";
+//        }
         $scope.reset.go();
     }
 
