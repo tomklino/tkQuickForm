@@ -20,7 +20,7 @@ describe('tkQuickForm', function () {
         ];
 
         var element = this.$compile(`
-            <div tk-quick-form="formStructure" form-data="formData" id="main_form"></div>"
+            <tk-quick-form form-structure="formStructure" form-data="formData" form-object="mainForm" ></tk-quick-form>
         `)(this.scope);
 
         this.scope.$digest(); // call digest first

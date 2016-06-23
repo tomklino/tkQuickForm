@@ -4,7 +4,7 @@
   "description": "Angularjs directive to create a form quickly and with very little code",
   "main": "tkQuickForm.js",
   "scripts": {
-    "test": "karma start karma.conf.js"
+    "test": "./node_modules/karma/bin/karma start karma.conf.js"
   },
   "repository": {
     "type": "git",
